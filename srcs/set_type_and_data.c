@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 13:54:52 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 15:28:32 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:34:55 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,22 +109,22 @@ void	set_char(t_arg *parg_struct, va_list *args)
 
 void	set_wstring(t_arg *parg_struct, va_list *args)
 {
-	char *wstr;
+	void *wstr;
 
-	wstr = va_arg(*args, char *);
+	wstr = va_arg(*args, wchar_t *);
 	parg_struct->data = wstr;
 	if (wstr)
-		parg_struct->str = ft_strdup(wstr);
+		parg_struct->wstr = ft_wstrdup(wstr);
 }
 
 void	set_wchar(t_arg *parg_struct, va_list *args)
 {
-	char	wc;
+	wchar_t wc;
 
-	wc = (char)va_arg(*args, int);
+	wc = (char)va_arg(*args, wchar_t);
 	parg_struct->data = &wc;
 	if (wc)
-		parg_struct->str = ft_chrtostr(wc);
+		parg_struct->wstr = ft_wchrtostr(wc);
 }
 
 void	set_escape(t_arg *parg_struct, va_list *args)

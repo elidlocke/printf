@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 19:09:46 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 13:09:38 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:07:14 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void    initialize_struct(t_arg *argument)
     argument->base = 10;
     argument->data = NULL;
     argument->str = NULL;
+    argument->wstr = NULL;
 }
 
 void    set_struct(char *input_chunk, t_arg *parg_struct, va_list *args)

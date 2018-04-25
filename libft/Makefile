@@ -6,7 +6,7 @@
 #    By: enennige <enennige@student.42.us.or>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/21 17:45:07 by enennige          #+#    #+#              #
-#    Updated: 2018/04/25 10:06:17 by enennige         ###   ########.fr        #
+#    Updated: 2018/04/25 16:44:33 by enennige         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,10 @@ SRC_NAME	=	ft_memset.c \
 				ft_tolower.c \
 				ft_strtoupper.c \
 				ft_strtolower.c \
+				ft_wstrlen.c \
+				ft_wstrdup.c \
+				ft_wchrtostr.c \
+				ft_putwstr.c \
 				ft_memalloc.c \
 				ft_memdel.c \
 				ft_strnew.c \

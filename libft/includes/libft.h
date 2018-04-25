@@ -6,7 +6,7 @@
 /*   By: enennige <enennige@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 14:58:39 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 10:07:54 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:45:34 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void				*ft_memccpy(void *dst, void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+void				*ft_memchr(const void *s, int c, size_t n);
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *s1);
 char				*ft_strndup(const char *s1, size_t n);
@@ -49,6 +50,10 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+size_t				ft_wstrlen(const wchar_t *s);
+wchar_t				*ft_wstrdup(const wchar_t *wstr);
+wchar_t				*ft_wchrtostr(wchar_t wchar);
+int					ft_putwstr(wchar_t *wstr);
 
 void				ft_strtoupper(char *str);
 void				ft_strtolower(char *str);

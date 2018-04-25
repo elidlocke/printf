@@ -39,6 +39,7 @@ typedef	struct s_arg {
 	int		base;
 	void	*data;
 	char	*str;
+	wchar_t	*wstr;
 } t_arg;
 
 char	*parse_string(char **str);

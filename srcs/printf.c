@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 18:59:53 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 13:19:06 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:47:26 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		write_arg(t_arg arg_struct)
 		str_size = ft_putchar(0);
 	else if (arg_struct.type == is_string && arg_struct.str == NULL)
 		str_size = ft_putstr("(null)");
+	else if (arg_struct.type == is_wchar || arg_struct.type == is_wstring)
+		str_size = ft_putwstr(arg_struct.wstr);
 	else if (arg_struct.is_invalid == 1)
 		str_size = 0;
 	else
