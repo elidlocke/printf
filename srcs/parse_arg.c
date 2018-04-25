@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 15:08:25 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 14:05:48 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 14:53:03 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_arg	parse_arg(char *input_chunk, va_list *args)
 	initialize_struct(&arg_struct);
 	set_struct(input_chunk, &arg_struct, args);
 	apply_widths_and_flags(&arg_struct);
-	//print_arg(arg_struct);
+	print_arg(arg_struct);
 
 	return(arg_struct);
 }

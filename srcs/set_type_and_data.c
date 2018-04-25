@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 13:54:52 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 13:48:42 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 15:28:32 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	set_snum(t_arg *parg_struct, va_list *args)
 		snum = va_arg(*args, intmax_t);
 	parg_struct->data = &snum;
 	set_is_negative(parg_struct);
-	parg_struct->str = ft_itoabase_umax(snum, parg_struct->base); //MALLOC
+	parg_struct->str = ft_itoabase_umax(snum, parg_struct->base);
 }
 
 void	set_unum(t_arg *parg_struct, va_list *args)
@@ -84,7 +84,7 @@ void	set_unum(t_arg *parg_struct, va_list *args)
 		unum = va_arg(*args, size_t);
 	parg_struct->data = &unum;
 	set_base(parg_struct);
-	parg_struct->str = ft_itoabase_umax(unum, parg_struct->base); //MALLOC
+	parg_struct->str = ft_itoabase_umax(unum, parg_struct->base);
 }
 
 void	set_string(t_arg *parg_struct, va_list *args)
@@ -94,7 +94,7 @@ void	set_string(t_arg *parg_struct, va_list *args)
 	str = va_arg(*args, char *);
 	parg_struct->data = str;
 	if (str)
-		parg_struct->str = ft_strdup(str); // MALLOC
+		parg_struct->str = ft_strdup(str);
 }
 
 void	set_char(t_arg *parg_struct, va_list *args)
@@ -104,17 +104,17 @@ void	set_char(t_arg *parg_struct, va_list *args)
 	c = (char)va_arg(*args, int);
 	parg_struct->data = &c;
 	if (c)
-		parg_struct->str = ft_chrtostr(c); // MALLOC
+		parg_struct->str = ft_chrtostr(c);
 }
 
 void	set_wstring(t_arg *parg_struct, va_list *args)
 {
-	char	*wstr;
+	char *wstr;
 
 	wstr = va_arg(*args, char *);
 	parg_struct->data = wstr;
 	if (wstr)
-		parg_struct->str = ft_strdup(wstr); // MALLOC
+		parg_struct->str = ft_strdup(wstr);
 }
 
 void	set_wchar(t_arg *parg_struct, va_list *args)
@@ -124,7 +124,7 @@ void	set_wchar(t_arg *parg_struct, va_list *args)
 	wc = (char)va_arg(*args, int);
 	parg_struct->data = &wc;
 	if (wc)
-		parg_struct->str = ft_chrtostr(wc); // MALLOC
+		parg_struct->str = ft_chrtostr(wc);
 }
 
 void	set_escape(t_arg *parg_struct, va_list *args)
