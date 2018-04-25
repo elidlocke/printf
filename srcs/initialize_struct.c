@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 19:09:46 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 11:40:08 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 13:09:38 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,21 @@ void    set_struct(char *input_chunk, t_arg *parg_struct, va_list *args)
     set_type(parg_struct);
 	set_data(parg_struct, args);
 	clean_flags(parg_struct);
+}
+
+void	free_struct(t_arg *parg_struct)
+{
+	free(parg_struct->flags);
+	parg_struct->flags = NULL;
+	if (parg_struct->modifiers)
+	{
+		free(parg_struct->modifiers);
+		parg_struct->modifiers = NULL;
+	}
+	if (parg_struct->str)
+	{
+		free(parg_struct->str);
+		parg_struct->str = NULL;
+	}
+
 }

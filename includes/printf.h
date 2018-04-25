@@ -60,6 +60,7 @@ void	apply_widths_and_flags(t_arg *parg_struct);
 
 void    initialize_struct(t_arg *argument);
 void    set_struct(char *input_chunk, t_arg *parg_struct, va_list *args);
+void	free_struct(t_arg *parg_struct);
 
 #define CONVERSIONS "sSpdDioOuUxXcCb%"
 #define FLAGS "+- 0#"
