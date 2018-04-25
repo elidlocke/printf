@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 13:54:52 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 11:39:29 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 13:48:42 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	set_unum(t_arg *parg_struct, va_list *args)
 void	set_string(t_arg *parg_struct, va_list *args)
 {
 	char	*str;
+
 	str = va_arg(*args, char *);
 	parg_struct->data = str;
 	if (str)
@@ -99,10 +100,31 @@ void	set_string(t_arg *parg_struct, va_list *args)
 void	set_char(t_arg *parg_struct, va_list *args)
 {
 	char	c;
+
 	c = (char)va_arg(*args, int);
 	parg_struct->data = &c;
 	if (c)
 		parg_struct->str = ft_chrtostr(c); // MALLOC
+}
+
+void	set_wstring(t_arg *parg_struct, va_list *args)
+{
+	char	*wstr;
+
+	wstr = va_arg(*args, char *);
+	parg_struct->data = wstr;
+	if (wstr)
+		parg_struct->str = ft_strdup(wstr); // MALLOC
+}
+
+void	set_wchar(t_arg *parg_struct, va_list *args)
+{
+	char	wc;
+
+	wc = (char)va_arg(*args, int);
+	parg_struct->data = &wc;
+	if (wc)
+		parg_struct->str = ft_chrtostr(wc); // MALLOC
 }
 
 void	set_escape(t_arg *parg_struct, va_list *args)
@@ -123,8 +145,8 @@ void	set_data(t_arg *parg_struct, va_list *args)
 	set_datatype[is_unum] = set_unum;
 	set_datatype[is_char] = set_char;
 	set_datatype[is_string] = set_string;
-	//set_datatype[is_wchar] = set_string;
-	//set_datatype[is_wstring] = set_string;
+	set_datatype[is_wchar] = set_wchar;
+	set_datatype[is_wstring] = set_wstring;
 	set_datatype[is_escape] = set_escape;
 	set_datatype[parg_struct->type](parg_struct, args);
 }
