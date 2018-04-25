@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 18:59:53 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 11:19:36 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 11:31:41 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		get_and_print_data(char *fmt, va_list *args)
 		{
 			arg_struct = parse_arg(input_chunk, args);
 			/* DEBUG */
-			//print_arg(arg_struct);
+			print_arg(arg_struct);
 			/* END DEBUG */
 			chars_printed += write_arg(arg_struct);
 		}

@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 13:54:52 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 11:19:17 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 11:39:29 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ void	set_string(t_arg *parg_struct, va_list *args)
 	char	*str;
 	str = va_arg(*args, char *);
 	parg_struct->data = str;
-	parg_struct->str = ft_strdup(str); // MALLOC
+	if (str)
+		parg_struct->str = ft_strdup(str); // MALLOC
 }
 
 void	set_char(t_arg *parg_struct, va_list *args)
@@ -100,7 +101,8 @@ void	set_char(t_arg *parg_struct, va_list *args)
 	char	c;
 	c = (char)va_arg(*args, int);
 	parg_struct->data = &c;
-	parg_struct->str = ft_chrtostr(c); // MALLOC
+	if (c)
+		parg_struct->str = ft_chrtostr(c); // MALLOC
 }
 
 void	set_escape(t_arg *parg_struct, va_list *args)
@@ -109,7 +111,8 @@ void	set_escape(t_arg *parg_struct, va_list *args)
 	(void)args;
 	c = parg_struct->specifier;
 	parg_struct->data = &c;
-	parg_struct->str = ft_chrtostr(c);
+	if (c)
+		parg_struct->str = ft_chrtostr(c);
 }
 
 void	set_data(t_arg *parg_struct, va_list *args)
