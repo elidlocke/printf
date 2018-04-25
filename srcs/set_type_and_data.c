@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 13:54:52 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/24 22:26:04 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 11:19:17 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	set_type(t_arg *parg_struct)
 
 	s = parg_struct->specifier;
 	m = parg_struct->modifiers;
-	if (ft_strchr("di", s) &&
-			!(ft_countletter(m, 'z') == 1))
+	if (ft_strchr("di", s))
 		parg_struct->type = is_snum;
 	else if (ft_strchr("dDioOuUxXbBp", s))
 		parg_struct->type = is_unum;
@@ -40,86 +39,89 @@ void	set_type(t_arg *parg_struct)
 		parg_struct->type = is_null;
 }
 
-void	set_snum(t_arg *parg_struct, va_list *ap)
+void	set_snum(t_arg *parg_struct, va_list *args)
 {
-	intmax_t	pnum;
-	
+	intmax_t	snum;
+		
 	if (!parg_struct->modifiers)
-		pnum = va_arg(*ap, int);
-	else if (ft_countletter(parg_struct->modifiers, 'j') == 1)
-		pnum = va_arg(*ap, intmax_t);
+		snum = va_arg(*args, int);
+	else if (ft_countletter(parg_struct->modifiers, 'j') == 1 ||
+			ft_countletter(parg_struct->modifiers, 'z') == 1)
+		snum = va_arg(*args, intmax_t);
 	else if (ft_countletter(parg_struct->modifiers, 'l') == 2)
-		pnum = va_arg(*ap, long long);
+		snum = va_arg(*args, long long);
 	else if (ft_countletter(parg_struct->modifiers, 'l') == 1)
-		pnum = va_arg(*ap, long);
+		snum = va_arg(*args, long);
 	else if (ft_countletter(parg_struct->modifiers, 'h') == 2)
-		pnum = (char)va_arg(*ap, int);
+		snum = (char)va_arg(*args, int);
 	else if (ft_countletter(parg_struct->modifiers, 'h') == 1)
-		pnum = (short)va_arg(*ap, int);
+		snum = (short)va_arg(*args, int);
 	else
-		pnum = va_arg(*ap, intmax_t);
-	parg_struct->data = &pnum;
+		snum = va_arg(*args, intmax_t);
+	parg_struct->data = &snum;
+	set_is_negative(parg_struct);
+	parg_struct->str = ft_itoabase_umax(snum, parg_struct->base); //MALLOC
 }
 
-void	set_unum(t_arg *parg_struct, va_list *ap)
+void	set_unum(t_arg *parg_struct, va_list *args)
 {
-	size_t	pnum;
+	size_t	unum;
 
 	if (parg_struct->specifier == 'D' || parg_struct->specifier == 'O' ||
 		parg_struct->specifier == 'U' || parg_struct->specifier == 'p')
-		pnum = va_arg(*ap, size_t);
+		unum = va_arg(*args, size_t);
 	else if (!parg_struct->modifiers)
-		pnum = va_arg(*ap, unsigned int);
+		unum = va_arg(*args, unsigned int);
 	else if (ft_countletter(parg_struct->modifiers, 'z') == 1)
-		pnum = va_arg(*ap, size_t);
+		unum = va_arg(*args, size_t);
 	else if (ft_countletter(parg_struct->modifiers, 'l') == 1)
-		pnum = va_arg(*ap, unsigned long);
+		unum = va_arg(*args, unsigned long);
 	else if (ft_countletter(parg_struct->modifiers, 'h') == 2)
-		pnum = (unsigned char)va_arg(*ap, int);
+		unum = (unsigned char)va_arg(*args, int);
 	else if (ft_countletter(parg_struct->modifiers, 'h') == 1)
-		pnum = (unsigned short)va_arg(*ap, int);
+		unum = (unsigned short)va_arg(*args, int);
 	else
-		pnum = va_arg(*ap, size_t);
-	parg_struct->data = &pnum;
+		unum = va_arg(*args, size_t);
+	parg_struct->data = &unum;
+	set_base(parg_struct);
+	parg_struct->str = ft_itoabase_umax(unum, parg_struct->base); //MALLOC
 }
 
-void	set_string(t_arg *parg_struct, va_list *ap)
+void	set_string(t_arg *parg_struct, va_list *args)
 {
 	char	*str;
-	str = va_arg(*ap, char *);
+	str = va_arg(*args, char *);
 	parg_struct->data = str;
+	parg_struct->str = ft_strdup(str); // MALLOC
 }
 
-void	set_char(t_arg *parg_struct, va_list *ap)
+void	set_char(t_arg *parg_struct, va_list *args)
 {
 	char	c;
-	c = (char)va_arg(*ap, int);
+	c = (char)va_arg(*args, int);
 	parg_struct->data = &c;
+	parg_struct->str = ft_chrtostr(c); // MALLOC
 }
 
-void	set_escape(t_arg *parg_struct)
+void	set_escape(t_arg *parg_struct, va_list *args)
 {
 	char	c;
+	(void)args;
 	c = parg_struct->specifier;
 	parg_struct->data = &c;
+	parg_struct->str = ft_chrtostr(c);
 }
 
-void	set_data(t_arg *parg_struct, va_list *ap)
+void	set_data(t_arg *parg_struct, va_list *args)
 {
-	if (parg_struct->type == is_escape)
-		set_escape(parg_struct);
-	else if (parg_struct->type == is_snum)
-		set_snum(parg_struct, ap);
-	else if (parg_struct->type == is_unum)
-		set_unum(parg_struct, ap);
-	else if (parg_struct->type == is_char)
-		set_char(parg_struct, ap);
-	else if (parg_struct->type == is_string)
-		set_string(parg_struct, ap);
-	/*
-	else if (parg_struct->type == is_wchar)
-		set_wchar(parg_struct);
-	else if (parg_struct->type == is_wstring)
-		set_wstring(parg_struct);
-	*/
+	void    (*set_datatype[num_types])(t_arg *, va_list *);
+	
+	set_datatype[is_snum] = set_snum;
+	set_datatype[is_unum] = set_unum;
+	set_datatype[is_char] = set_char;
+	set_datatype[is_string] = set_string;
+	//set_datatype[is_wchar] = set_string;
+	//set_datatype[is_wstring] = set_string;
+	set_datatype[is_escape] = set_escape;
+	set_datatype[parg_struct->type](parg_struct, args);
 }

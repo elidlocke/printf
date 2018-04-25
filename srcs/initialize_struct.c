@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 19:09:46 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/24 22:33:22 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 09:49:25 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void    initialize_struct(t_arg *argument)
     argument->modifiers = NULL;
 	argument->specifier = 0;
     argument->is_invalid = 0;
+    argument->is_negative = 0;
+    argument->base = 10;
     argument->data = NULL;
     argument->str = NULL;
 }
@@ -43,20 +45,12 @@ void    initialize_struct(t_arg *argument)
 void    set_struct(char *input_chunk, t_arg *parg_struct, va_list *args)
 {
     input_chunk++;
-	printf("input chunk: |%s|\n", input_chunk);
 	set_flags(&input_chunk, parg_struct); // gets malloc'd flags
-    printf("input chunk: |%s|\n", input_chunk);
     set_fieldwidth(&input_chunk, parg_struct);
-    printf("input chunk: |%s|\n", input_chunk);
     set_precision(&input_chunk, parg_struct);
-    printf("input chunk: |%s|\n", input_chunk);
     set_modifiers(&input_chunk, parg_struct); //gets malloc'd string
-    printf("input chunk: |%s|\n", input_chunk);
     set_specifier(&input_chunk, parg_struct);
-    printf("input chunk: |%s|\n", input_chunk);
     set_type(parg_struct);
-    printf("input chunk: |%s|\n", input_chunk);
 	set_data(parg_struct, args);
-    printf("input chunk: |%s|\n", input_chunk);
 	clean_flags(parg_struct);
 }

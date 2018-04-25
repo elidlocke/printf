@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 18:54:39 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/24 22:32:23 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 08:39:24 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	set_flags(char **str_var, t_arg *parg_struct)
 {
-	printf("I AM HERE");
 	while (**str_var == '#' || **str_var == '0' || **str_var == '-' ||
 			**str_var == '+' || **str_var == ' ')
 	{

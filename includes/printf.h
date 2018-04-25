@@ -35,6 +35,8 @@ typedef	struct s_arg {
 	char	*modifiers;
 	int		specifier;
 	int		is_invalid;
+	int		is_negative;
+	int		base;
 	void	*data;
 	char	*str;
 } t_arg;
@@ -50,6 +52,11 @@ void    set_specifier(char **str_var, t_arg *parg_struct);
 void    set_type(t_arg *parg_struct);
 void    set_data(t_arg *parg_struct, va_list *ap);
 void    clean_flags(t_arg *parg_struct);
+
+void    set_base(t_arg *parg_struct);
+void    set_is_negative(t_arg *parg_struct);
+
+void	apply_widths_and_flags(t_arg *parg_struct);
 
 void    initialize_struct(t_arg *argument);
 void    set_struct(char *input_chunk, t_arg *parg_struct, va_list *args);

@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 18:59:53 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/24 22:34:25 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 11:19:36 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,15 @@ void	print_arg(t_arg arg_struct)
 	printf("specifier: %c\n", arg_struct.specifier);
 	printf("***OPTIONS***\n");
 	printf("is_invalid: %d\n", arg_struct.is_invalid);
+	printf("is_negative: %d\n", arg_struct.is_negative);
+	printf("base: %d\n", arg_struct.base);
 	printf("***TYPE***\n");
 	printf("type: %d\n", arg_struct.type);
 	printf("***DATA***\n");
 	if (arg_struct.type == is_unum)
 		printf("data: %zu\n", *(size_t *)arg_struct.data);
 	if (arg_struct.type == is_snum)
-		printf("data: %zu\n", *(intmax_t *)arg_struct.data);
+		printf("data: %jd\n", *(intmax_t *)arg_struct.data);
 	else if (arg_struct.type == is_char)
 		printf("data: %c\n", *(char *)arg_struct.data);
 	else if (arg_struct.type == is_string)
@@ -68,21 +70,6 @@ int		write_arg(t_arg arg_struct)
 }
 
 /*
-* Tells us whether an input chunk should make a call to the parameter list
-*/
-// REFACTOR INTO SET_TYPE FILE !!
-int		arg_gets_parameter(char *input_chunk)
-{
-	char	specifier;
-
-	specifier = input_chunk[ft_strlen(input_chunk) - 1];
-	if (specifier == '%' || ft_strchr(CONVERSIONS, specifier) == NULL)
-		return (0);
-	return (1);
-}
-
-
-/*
 ** Gets the data & prints it
 */
 int		get_and_print_data(char *fmt, va_list *args)
@@ -99,7 +86,7 @@ int		get_and_print_data(char *fmt, va_list *args)
 		{
 			arg_struct = parse_arg(input_chunk, args);
 			/* DEBUG */
-			print_arg(arg_struct);
+			//print_arg(arg_struct);
 			/* END DEBUG */
 			chars_printed += write_arg(arg_struct);
 		}
