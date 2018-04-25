@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 09:53:29 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 11:00:48 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 14:05:34 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	manage_precision(t_arg *parg_struct)
 		len = parg_struct->precision - ft_strlen(str);
 		if (parg_struct->type == is_string && len < 0)
 		{
-			if ((parg_struct->str = ft_strndup(str, parg_struct->precision))) //MALLOC ALERT
+			if ((parg_struct->str = ft_strndup(str, parg_struct->precision)))
 				free(str);
 		}
 		else if (parg_struct->type == is_unum || parg_struct->type == is_snum)
@@ -47,7 +47,7 @@ void	manage_precision(t_arg *parg_struct)
 				parg_struct->str[0] = '\0';
 			else if (len > 0)
 			{
-				ft_addnfix(&(parg_struct->str),'0', len, 1); // AM I FREEING MEM CORRECTLY HERE ?? 
+				ft_addnfix(&(parg_struct->str),'0', len, 1);
 			}
 		}
 	}

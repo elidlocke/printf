@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 18:54:39 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 08:39:24 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 14:04:55 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,6 @@ void	clean_flags(t_arg *parg_struct)
 		parg_struct->flags->has_zeroflag = 0;
 	if (parg_struct->flags->has_zeroflag && parg_struct->precision != -1)
 		parg_struct->flags->has_zeroflag = 0;
+	if (parg_struct->specifier == 'p')
+		parg_struct->flags->has_hashflag = 1;
 }
