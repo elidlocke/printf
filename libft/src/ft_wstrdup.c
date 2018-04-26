@@ -6,11 +6,12 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 16:09:49 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 16:32:08 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 17:09:20 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 /*
 ** The ft_wstrdup() function allocates sufficient memory for a copy of the
@@ -21,12 +22,12 @@
 
 wchar_t	*ft_wstrdup(const wchar_t *wstr)
 {
-	size_t	s1_len;
+	size_t	len;
 	wchar_t	*wstr_copy;
 	int		i;
 
-	s1_len = ft_wstrlen(wstr);
-	wstr_copy = malloc(sizeof(*wstr_copy) * (s1_len + 1));
+	len = ft_wstrlen(wstr);
+	wstr_copy = malloc(sizeof(*wstr_copy) * (len + 1));
 	if (wstr_copy)
 	{
 		i = 0;

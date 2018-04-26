@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 16:17:56 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 16:30:14 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 17:21:58 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,7 @@ size_t ft_wstrlen (const wchar_t *s)
 	len = 0;
 	while (s[len] != L'\0')
 	{
-		if (s[++len] == L'\0')
-			return len;
-		if (s[++len] == L'\0')
-			return len;
-		if (s[++len] == L'\0')
-			return len;
-		++len;
+		len++;
 	}
 	return len;
 }

@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 16:43:05 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 16:46:12 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 17:23:03 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ int		ft_putwstr(wchar_t *ws)
 	int	size;
 	if (ws)
 	{
-		size = ft_wstrlen(ws);
-		write(1, ws, size);
+		size = 0;
+		while (ws[size] != L'\0')
+		{
+			write(1, &ws[size], 1);
+			size++;
+		}
 		return (size);
-	}	
-
+	}
 	return (0);
 }
