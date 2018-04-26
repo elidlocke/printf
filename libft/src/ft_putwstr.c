@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 16:43:05 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 17:44:25 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/25 17:46:09 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_putwstr(wchar_t *ws)
 	if (ws)
 	{
 		size = ft_wstrlen(ws);
-		write(1, ws, (size * sizeof(wchar_t)));
+		write(1, ws, size);
 		return (size);
 	}	
 
