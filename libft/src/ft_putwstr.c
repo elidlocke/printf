@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 16:43:05 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/30 10:01:48 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/30 10:22:41 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		get_mask(wint_t c, size_t *len)
 	}
 }
 
-static size_t	ft_putwchar(wint_t c)
+size_t	ft_putwchar(wint_t c)
 {
 	int		output;
 	size_t	len;
@@ -69,16 +69,14 @@ static size_t	ft_putwchar(wint_t c)
 int		ft_putwstr(wchar_t *ws)
 {
 	int i;
-	int	size;
 
 	i = 0;
-	size = 0;
 	while (ws[i] != '\0')
 	{
-		size += ft_putwchar(ws[i]);
+		ft_putchar(ws[i]);
 		i++;	
 	}
 	
-	return (size);
+	return (i);
 	
 }
