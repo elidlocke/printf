@@ -6,15 +6,12 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 18:59:53 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/30 09:18:43 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/30 10:45:52 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-/*
-** Writes the variable chunk and returns the size of chars written
-*/
 int		write_arg(t_arg arg_struct)
 {
 	int		str_size;
@@ -29,19 +26,15 @@ int		write_arg(t_arg arg_struct)
 		str_size = 0;
 	else
 		str_size = ft_putstr(arg_struct.str);
-	return(str_size);
+	return (str_size);
 }
 
-/*
-** Gets the data & prints it
-*/
 int		get_and_print_data(char *fmt, va_list *args)
 {
 	int		chars_printed;
 	char	*input_chunk;
 	t_arg	arg_struct;
 
-	//parse string
 	chars_printed = 0;
 	while ((input_chunk = parse_string(&fmt)))
 	{
@@ -53,11 +46,11 @@ int		get_and_print_data(char *fmt, va_list *args)
 		}
 		else
 		{
-			chars_printed += ft_putstr(input_chunk);	
+			chars_printed += ft_putstr(input_chunk);
 		}
 		free(input_chunk);
 	}
-	return (chars_printed);	
+	return (chars_printed);
 }
 
 /*
@@ -66,17 +59,18 @@ int		get_and_print_data(char *fmt, va_list *args)
 ** representation and then prints the full string. See man 3 printf
 */
 
-int     ft_printf(const char *restrict format, ...)
+int		ft_printf(const char *restrict format, ...)
 {
-    va_list args;
-    char    *fmt_copy;
-    int     chars_printed;
+	va_list	args;
+	char	*fmt_copy;
+	int		chars_printed;
 
-    fmt_copy = ft_strdup(format);
-    if (!fmt_copy)
-        return (0);
-    va_start(args, format);
-    chars_printed = get_and_print_data(fmt_copy, &args);
-    free(fmt_copy);
-    va_end(args);
-    return (chars_printed);}
+	fmt_copy = ft_strdup(format);
+	if (!fmt_copy)
+		return (0);
+	va_start(args, format);
+	chars_printed = get_and_print_data(fmt_copy, &args);
+	free(fmt_copy);
+	va_end(args);
+	return (chars_printed);
+}

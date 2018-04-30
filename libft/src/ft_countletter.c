@@ -6,25 +6,25 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 19:20:34 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/24 19:20:58 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/30 11:18:06 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int     ft_countletter(char *str, char c)
+int	ft_countletter(char *str, char c)
 {
-    int i;
-    int count;
+	int i;
+	int count;
 
-    i = 0;
-    count = 0;
-    if (str)
-    {
-        while (str[i] != '\0')
-        {
-            if (str[i] == c)
-                count++;
-            i++;
-        }
-    }
-    return (count);
+	i = 0;
+	count = 0;
+	if (str)
+	{
+		while (str[i] != '\0')
+		{
+			if (str[i] == c)
+				count++;
+			i++;
+		}
+	}
+	return (count);
 }

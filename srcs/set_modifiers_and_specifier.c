@@ -6,16 +6,11 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 18:53:08 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/24 22:13:28 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/30 10:48:14 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-/*
-** get_modifiers() moves forward through a string, capturing the modifiers
-** as it goes
-*/
 
 void	set_modifiers(char **str_var, t_arg *parg_struct)
 {

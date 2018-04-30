@@ -6,20 +6,20 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 16:17:56 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 17:47:37 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/30 11:17:03 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_wstrlen (const wchar_t *s)
+size_t	ft_wstrlen(const wchar_t *s)
 {
 	size_t len;
-	
+
 	len = 0;
 	while (s[len] != L'\0')
 	{
 		len++;
 	}
-	return len;
+	return (len);
 }

@@ -6,7 +6,7 @@
 #    By: enennige <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/05 08:13:57 by enennige          #+#    #+#              #
-#    Updated: 2018/04/25 10:45:46 by enennige         ###   ########.fr        #
+#    Updated: 2018/04/30 10:58:59 by enennige         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ NAME = libftprintf.a
 CFLAGS = -Wall -Wextra -Werror
 SRC_PATH = srcs/
 SRC_NAME = printf.c parse_string.c parse_arg.c initialize_struct.c
-SRC_NAME += set_widths_and_flags.c set_type_and_data.c
+SRC_NAME += set_widths_and_flags.c set_num_types_and_data.c set_type_and_data.c
 SRC_NAME += set_modifiers_and_specifier.c set_options.c
-SRC_NAME += apply_widths_and_flags.c
+SRC_NAME += do_flag_modifications.c apply_widths_and_flags.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJS = $(patsubst %.c, %.o, $(SRC_NAME))
 LIB_NAME = libft

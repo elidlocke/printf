@@ -51,12 +51,19 @@ void    set_precision(char **str_var, t_arg *parg_struct);
 void    set_modifiers(char **str_var, t_arg *parg_struct);
 void    set_specifier(char **str_var, t_arg *parg_struct);
 void    set_type(t_arg *parg_struct);
+void    set_string(t_arg *parg_struct, va_list *args);
+void    set_char(t_arg *parg_struct, va_list *args);
+void    set_wstring(t_arg *parg_struct, va_list *args);
+void    set_wchar(t_arg *parg_struct, va_list *args);
 void    set_data(t_arg *parg_struct, va_list *ap);
 void    clean_flags(t_arg *parg_struct);
 
 void    set_base(t_arg *parg_struct);
 void    set_is_negative(t_arg *parg_struct);
 
+void    manage_zeroed_fieldwidth(t_arg *parg_struct);
+void    manage_hash(t_arg *arg_struct);
+void    manage_sign(t_arg *parg_struct);
 void	apply_widths_and_flags(t_arg *parg_struct);
 
 void    initialize_struct(t_arg *argument);

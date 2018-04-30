@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 09:54:03 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 10:44:48 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/30 11:15:07 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,26 @@
 
 void	ft_addnfix(char **str, char fix_char, int len, int side)
 {
-    char    *fix;
-    char    *joined;
+	char	*fix;
+	char	*joined;
 
-    joined = NULL;
-    if (len && len != -1)
-    {
-        fix = ft_strnew(len);
+	joined = NULL;
+	if (len && len != -1)
+	{
+		fix = ft_strnew(len);
 		if (!(fix))
-            return ;
-        ft_memset(fix, fix_char, len);
-        if (side == 2)
-        {
-            joined = ft_strjoin(*str, fix);
-        }
-        else
-        {
-            joined = ft_strjoin(fix, *str);
-        }
+			return ;
+		ft_memset(fix, fix_char, len);
+		if (side == 2)
+		{
+			joined = ft_strjoin(*str, fix);
+		}
+		else
+		{
+			joined = ft_strjoin(fix, *str);
+		}
 		free(*str);
 		free(fix);
 		*str = joined;
-    }
+	}
 }
