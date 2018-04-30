@@ -6,7 +6,7 @@
 /*   By: enennige <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 13:54:52 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 16:53:27 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/30 09:57:33 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	set_type(t_arg *parg_struct)
 		parg_struct->type = is_unum;
 	else if (s == 'C' || (m  && s == 'c' && ft_countletter(m, 'l') == 1))
 		parg_struct->type = is_wchar;
-	else if (s == 'S' || 
-			(m && s == 'c' && ft_countletter(m, 'l') == 1))
+	else if (s == 'S' || (m && s == 's' && ft_countletter(m, 'l') == 1))
 		parg_struct->type = is_wstring;
 	else if (s == 'c')
 		parg_struct->type = is_char;
@@ -121,7 +120,7 @@ void	set_wchar(t_arg *parg_struct, va_list *args)
 {
 	wchar_t wc;
 
-	wc = (char)va_arg(*args, wchar_t);
+	wc = va_arg(*args, wchar_t);
 	parg_struct->data = &wc;
 	if (wc)
 		parg_struct->wstr = ft_wchrtostr(wc);

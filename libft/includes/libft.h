@@ -6,7 +6,7 @@
 /*   By: enennige <enennige@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 14:58:39 by enennige          #+#    #+#             */
-/*   Updated: 2018/04/25 16:45:34 by enennige         ###   ########.fr       */
+/*   Updated: 2018/04/30 10:00:05 by enennige         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdint.h>
+# include <wchar.h>
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
